@@ -2,8 +2,11 @@ version: 1.0
 runtime: python3
 build:
   commands:
+    pre-build:
+      - python -m ensurepip --upgrade
+      - python -m pip install --upgrade pip
     build:
-      - pip install -r requirements.txt
+      - python -m pip install -r requirements.txt
 run:
   command: python -m streamlit run text_counter.py --server.port=8080 --server.address=0.0.0.0
   network:
